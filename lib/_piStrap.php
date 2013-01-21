@@ -50,8 +50,14 @@ class piStrap {
 			//Pass to convertTime function to convert seconds into years, days, hours, minutes, seconds.
 		    $uptime = $this->convertTime($uptime[0]);
 			
+			$year = ($uptime[0] > 1 ? "Years" : "Year");
+			$day = ($uptime[1] > 1 ? "Days" : "Day");		
+			$hour = ($uptime[2] > 1 ? "Hours" : "Hour");		
+			$min = ($uptime[3] > 1 ? "Minutes" : "Minute");		
+			$sec = ($uptime[4] > 1 ? "Seconds" : "Second");		
+			
 			//Return converted times in array
-			return $uptime;
+			return array($year => $uptime[0], $day => $uptime[1], $hour => $uptime[2], $min => $uptime[3], $sec => $uptime[4]);
 		}
 		
 		/**
@@ -66,7 +72,7 @@ class piStrap {
 			$min = floor(($seconds / 60) % 60);
 			$sec = $seconds % 60;
 			
-			return array('year' => $year, 'day' => $day, 'hour' => $hour, 'min' => $min, 'sec' => $sec);
+			return array($year, $day, $hour, $min, $sec);
 		}
 		
 		/**

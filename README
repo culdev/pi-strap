@@ -1,24 +1,26 @@
-PI-STRAP
-========
+# Pi-Strap
 
 Pi-Strap is a Raspberry Pi statistics class written in PHP and presented using
 Twitter Bootstrap.
 
-Installation
-------------
+## Installation-
 
 The piStrap.php class must be included into your PHP file: 
-require('lib/_piStrap.php');
+```require('lib/_piStrap.php');
+```
 
 Create a new piStrap instance:
-$stats = new piStrap;
+```$stats = new piStrap;
+```
 
 Access Pi data:
-$info =  $stats->generalStats();
+```$info =  $stats->generalStats();
 $user =  $stats->userStats();
+```
 etc..
 
 Basic loop to access data:
-foreach($info as $key => $value) {
+```foreach($info as $key => $value) {
      echo $key.": ".$value;
 }
+```

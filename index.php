@@ -40,12 +40,14 @@
 						echo "<tr><td>Maximum Temp:</td><td>" .$temp['maxTempC']."&deg;C</td></tr>";
 						echo "<tr><td>Current Temp:</td><td>" .$temp['tempC']."&deg;C</td></tr>";
 						echo "<tr><td>Current Temp:</td><td>" .$temp['tempF']."&deg;F</td></tr>";
+					
+						$colour = ($percentRemain < 20 ? "bar-danger" : "bar-success");
 					?>
 				</table>
 				<hr>
 					<div class="progress">
 						<div class="bar bar-primary" style="width: <?php echo $tempPercent; ?>%;"><?php echo $temp['tempC']; ?>&deg;C</div>
-						<div class='bar bar-success' style="width: <?php echo $percentRemain; ?>%;"></div>
+						<div class='bar <?php echo $colour; ?>' style="width: <?php echo $percentRemain; ?>%;"></div>
 					</div>
 				<hr>
 			</div>
@@ -64,13 +66,15 @@
 							$memPercentFree = $ram['memArray']['memPercentFree'];
 							$memUsed = $ram['memArray']['memUsed'];
 							$memFree = $ram['memArray']['memFree'];
+							
+							$colour = ($memPercentFree < 20 ? "bar-danger" : "bar-success");
 						} 
 					?>
 				</table>
 				<hr>
 					<div class="progress">
 						<div class="bar bar-primary" style="width: <?php echo $memPercentUsed; ?>%;"><?php echo $memUsed; ?> KB</div>
-						<div class="bar bar-success" style="width: <?php echo $memPercentFree; ?>%;"><?php echo $memFree; ?> KB</div>
+						<div class="bar <?php echo $colour; ?>" style="width: <?php echo $memPercentFree; ?>%;"><?php echo $memFree; ?> KB</div>
 					</div>
 				</p>
 				<hr>
@@ -94,10 +98,12 @@
 							
 							$percentUsed = $hdd[$i]['percentageUsed'];
 							$percentFree = 100 - $hdd[$i]['percentageUsed']."%";
-												
+							
+							$colour = ($percentFree < 20 ? "bar-danger" : "bar-success");
+							
 							echo "<div class='progress'>";
 								echo "<div class='bar bar-primary' style='width: $percentUsed;'>" . $hdd[$i]['used'] . "B Used</div>";
-								echo "<div class='bar bar-success' style='width: $percentFree;'>" . $hdd[$i]['available'] . "B Free</div>";
+								echo "<div class='bar $colour' style='width: $percentFree;'>" . $hdd[$i]['available'] . "B Free</div>";
 							echo "</div>";
 							echo "<hr>";
 							
@@ -128,7 +134,7 @@
 							if(!empty($value))
 							{
 								//Echo the value followed by key
-								echo "$value $key ";
+								echo "$value $key.. ";
 							}
 						} 
 					?>
@@ -155,7 +161,7 @@
 						//If we don't have users
 						else
 							{
-								echo "<tr><td>No users currently active</td></tr>";
+								echo "<tr><td>No users currently active..</td></tr>";
 							}
 					?>
 				</table>
